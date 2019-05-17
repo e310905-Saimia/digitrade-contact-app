@@ -1,8 +1,6 @@
-<div *ngFor="let contact of contacts">
-  <app-contact-list-item
-    [contact]="contact"
-    (selected)="onContactSeleced($event)">
-  </app-contact-list-item>
+<div *ngFor="let c of contacts">
+  {{c.firstName}} {{c.lastName}} {{c.phone}}
+
 </div>
 
 
