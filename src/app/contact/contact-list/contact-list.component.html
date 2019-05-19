@@ -1,6 +1,9 @@
+<input type="text" [(ngModel)]="selectContactFirstName">
 <div *ngFor="let c of contacts">
-  {{c.firstName}} {{c.lastName}} {{c.phone}}
-
+  <dtca-contact-list-item
+    [contact]="c"
+    (selected)="onContactSeleced($event)">
+  </dtca-contact-list-item>
 </div>
 
 
