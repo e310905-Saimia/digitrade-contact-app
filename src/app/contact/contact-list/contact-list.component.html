@@ -1,4 +1,4 @@
-<input type="text" [(ngModel)]="selectContactFirstName">
+<input value="{{ selectedContactName }}">
 <div *ngFor="let c of contacts">
   <dtca-contact-list-item
     [contact]="c"
