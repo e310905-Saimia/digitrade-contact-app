@@ -4,6 +4,7 @@ export class Contact {
   phone: string;
 
 
+
   constructor(firstName?: string, lastName?: string, phone?: string) {
     this.firstName = firstName;
     this.lastName = lastName;
