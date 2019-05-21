@@ -23,8 +23,11 @@ export class ContactListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.contacts = this.contactService.get();
+    /*this.contacts = this.contactService.get();
     console.log(this.contacts);
+     */
+    this.contactService.get().subscribe((response => {
+      this.contacts = response;
+    }));
   }
-
 }
