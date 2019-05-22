@@ -1,11 +1,25 @@
+<!--
 <input value="{{ selectedContactName }}">
+
 <div *ngFor="let c of contacts">
   <dtca-contact-list-item
     [contact]="c"
     (selected)="onContactSeleced($event)">
   </dtca-contact-list-item>
 </div>
+-->
 
-
-
-
+<div class="dtca-card-container" fxLayout="column" fxLayoutAlign="start center" fxFlexFill>
+  <mat-card fxLayout="column" class="dtca-card">
+    <mat-nav-list class="dtca-contact-list">
+      <dtca-contact-list-item
+        *ngFor="let c of contacts"
+        [contact]="c"
+        (selected)="onContactSeleced($event)">
+      </dtca-contact-list-item>
+    </mat-nav-list>
+  </mat-card>
+</div>
+<button mat-fab color="accent" class="dtca-fab">
+  <mat-icon>add</mat-icon>
+</button>
