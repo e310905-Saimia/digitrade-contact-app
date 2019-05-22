@@ -20,9 +20,14 @@ export class ContactService {
      */
   }
 
+  /* get(): Contact[] {
+    console.log('service');
+    console.log (this.contactHttpService.get());
+    return [];
+  }
+   */
   get(): Observable<Contact[]> {
     // return this.contacts;
     return this.contactHttpService.get();
-
   }
 }

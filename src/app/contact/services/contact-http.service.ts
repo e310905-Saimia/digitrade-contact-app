@@ -13,10 +13,20 @@ export class ContactHttpService {
   private url: string;
 
   constructor(private http: HttpClient) {
-    // this.url = 'http://localhost:3000/contacts';
-    this.url = environment.endpointUrl + '/contacts';
+    this.url = 'http://localhost:3000/contacts';
+    // this.url = environment.endpointUrl + '/contacts';
   }
 
+  /*
+  get() {
+    return this.http
+      .get(this.url)
+      .subscribe((data) => {
+        console.log('http')
+        console.log(data);
+      });
+  }
+*/
   get(): Observable<Contact[]> {
     return this.http.get<Contact[]>(this.url)
       .pipe(
@@ -25,4 +35,5 @@ export class ContactHttpService {
         })
       );
   }
+
 }
