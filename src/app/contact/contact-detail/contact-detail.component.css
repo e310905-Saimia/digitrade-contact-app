@@ -1,0 +1,8 @@
+.width-detail{
+  width: 300px;
+}
+.fab-detail {
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+}
