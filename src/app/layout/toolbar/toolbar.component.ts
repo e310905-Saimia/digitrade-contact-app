@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ToolbarOptions} from './toolbar-options';
+import {ToolbarService} from './toolbar.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'dtca-toolbar',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  @Output() MenuClick: EventEmitter<any>;
+  options: ToolbarOptions;
 
-  ngOnInit() {
+  constructor(private toolbar: ToolbarService, private location: Location) {
+    this.MenuClick = new EventEmitter<any>();
   }
 
+  ngOnInit() {
+    this.toolbar.getToolbarOptions().subscribe((options: ToolbarOptions) => {
+      this.options = options;
+    });
+  }
+
+  onMenuClick() {
+    this.MenuClick.emit();
+  }
+
+  onNavigateBack() {
+    this.location.back();
+  }
 }
