@@ -13,8 +13,8 @@ export class ContactHttpService {
   private url: string;
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:3000/contacts';
-    // this.url = environment.endpointUrl + '/contacts';
+    // this.url = 'http://localhost:3000/contacts';
+    this.url = environment.endpointUrl + '/contacts';
   }
 
   /*
@@ -34,6 +34,12 @@ export class ContactHttpService {
           return contacts as Contact[];
         })
       );
+  }
+
+  getById(id): Observable<Contact> {
+    return this.http.get(this.url + '/' + id).pipe(map(response => {
+      return response as Contact;
+    }));
   }
 
 }
