@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ToolbarOptions} from './toolbar-options';
 import {ToolbarService} from './toolbar.service';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'dtca-toolbar',
@@ -13,7 +14,7 @@ export class ToolbarComponent implements OnInit {
   @Output() MenuClick: EventEmitter<any>;
   options: ToolbarOptions;
 
-  constructor(private toolbar: ToolbarService, private location: Location) {
+  constructor(private toolbar: ToolbarService, private location: Location, private router: Router) {
     this.MenuClick = new EventEmitter<any>();
   }
 
@@ -28,6 +29,8 @@ export class ToolbarComponent implements OnInit {
   }
 
   onNavigateBack() {
-    this.location.back();
+    // this.location.back(); // menee selainhistoriassa taaksepäin
+
+    this.router.navigate(['/contacts']);
   }
 }

@@ -10,7 +10,7 @@ export class ToolbarService {
 
   constructor() {
     this.toolbarOptions = new BehaviorSubject<ToolbarOptions>(
-      new ToolbarOptions(false, 'Contacts Application', []));
+      new ToolbarOptions(false, '.: Contacts Application :.', []));
   }
 
   getToolbarOptions(): Observable<ToolbarOptions> {

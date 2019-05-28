@@ -1,12 +1,12 @@
 import {ToolbarAction} from './toolbar-action';
 
 export class ToolbarOptions {
-  isBackEnabled: boolean;
+  backEnabled: boolean;
   title: string;
   actions: ToolbarAction[];
 
-  constructor(isBackEnabled: boolean, title: string, actions: ToolbarAction[]) {
-    this.isBackEnabled = isBackEnabled;
+  constructor(backEnabled: boolean, title: string, actions: ToolbarAction[]) {
+    this.backEnabled = backEnabled;
     this.title = title;
     this.actions = actions;
   }
