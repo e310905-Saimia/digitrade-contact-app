@@ -5,6 +5,7 @@ import {ContactService} from '../services/contact.service';
 import {ToolbarService} from '../../layout/toolbar/toolbar.service';
 import {ToolbarAction} from '../../layout/toolbar/toolbar-action';
 import {ToolbarOptions} from '../../layout/toolbar/toolbar-options';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'dtca-contact-detail',
@@ -14,22 +15,23 @@ import {ToolbarOptions} from '../../layout/toolbar/toolbar-options';
 export class ContactDetailComponent implements OnInit {
   contact: Contact;
   contactId: any;
-  isEditingEnabled: boolean;
+  editingEnabled: boolean;
 
 
-  constructor(private router: Router, private route: ActivatedRoute,
+  constructor(public snackBar: MatSnackBar, private router: Router, private route: ActivatedRoute,
               private contactService: ContactService, private toolbar: ToolbarService) {
     this.contact = new Contact();
   }
 
   ngOnInit() {
     this.contactId = this.route.snapshot.paramMap.get('id');
-
+    console.log('onInit:'+ this.contactId);
     let toolbarActions: ToolbarAction[];
 
+    console.log(this.contactId);
     if (this.contactId == null) {
       // Create contact
-      this.isEditingEnabled = true;
+      this.editingEnabled = true;
       toolbarActions = [];
     } else {
       // View/Edit contact
@@ -48,10 +50,11 @@ export class ContactDetailComponent implements OnInit {
     this.toolbar.setToolbarOptions(new ToolbarOptions(true, 'Contact', toolbarActions));
   }
 
+
   onEdit() {
     let toolbarActions: ToolbarAction[];
-    this.isEditingEnabled = !this.isEditingEnabled;
-    if (this.isEditingEnabled === true) {
+    this.editingEnabled = !this.editingEnabled;
+    if (this.editingEnabled === true) {
       // Edit mode on
       console.log('Edit mode enabled');
       toolbarActions = [
@@ -67,11 +70,34 @@ export class ContactDetailComponent implements OnInit {
   }
 
   onDelete() {
-    this.isEditingEnabled = false;
+    this.editingEnabled = false;
     this.contactService.deleteContact(this.contact).subscribe(() => {
       this.router.navigate(['/contacts']);
     });
   }
-}
 
+
+  onSave(): void {
+    if (this.contactId == null) {
+      // Create contact
+      this.editingEnabled = false;
+      this.contactService.createContact(this.contact).subscribe(response => {
+        console.log(response);
+        this.router.navigate(['/contacts']);
+        this.snackBar.open('Contact created!', 'Ok', {
+          duration: 3000
+        });
+      });
+    } else {
+      // Edit contact
+      this.editingEnabled = false;
+      this.contactService.updateContact(this.contact).subscribe(response => {
+        this.contact = response;
+        this.snackBar.open('Contact modified!', 'Ok', {
+          duration: 3000
+        });
+      });
+    }
+  }
+}
 
