@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Kontakti sovellus digitrade 2019 JKÖ';
+  title = 'Kontakti sovellus digitrade 2019 JK';
 }

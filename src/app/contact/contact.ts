@@ -2,7 +2,7 @@ export class Contact {
   id: string;
   firstName: string;
   lastName: string;
-  phone: string;
+  phoneNumber: string;
   email: string;
   street?: string;
   postalCode?: string;
@@ -16,7 +16,7 @@ export class Contact {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.phone = phone;
+    this.phoneNumber = phone;
     this.email = email;
     this.street = street;
     this.postalCode = postalCode;

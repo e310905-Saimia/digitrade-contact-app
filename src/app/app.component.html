@@ -21,15 +21,16 @@
     </div>
   </mat-sidenav>
   <div fxFlexFill class="dtca-sidenav-content">
-    <!-- App content -->
-    <mat-toolbar color="primary">
-
-      <button mat-icon-button (click)="sidenav.toggle()">
+    <!-- App content
+    <mat-toolbar color="primary"> -->
+      <!-- Toolbar -->
+      <!-- <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon class="mat-18">menu</mat-icon>
       </button>
       <span>Contact application 2019 (C)</span>
     </mat-toolbar>
-    <!-- <dtca-toolbar (MenuClick)="sidenav.toggle()"></dtca-toolbar> -->
+    -->
+    <dtca-toolbar (MenuClick)="sidenav.toggle()"></dtca-toolbar>
     <div class="dtca-app-container">
       <!-- App -->
       <router-outlet></router-outlet>
